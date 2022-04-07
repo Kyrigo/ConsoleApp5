@@ -2,7 +2,7 @@
 {
     public abstract class BankAccount
     {
-        private static int _numId = 0;
+        private static int _numId;
         protected int Id;
         protected int OwnerId;
         protected double Amount;        
