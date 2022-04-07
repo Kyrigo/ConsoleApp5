@@ -10,6 +10,7 @@
   <ItemGroup>
     <Folder Include="Bank\" />
     <Folder Include="BankAccount\" />
+    <Folder Include="Client\" />
   </ItemGroup>
 
 </Project>
