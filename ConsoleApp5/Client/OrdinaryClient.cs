@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp5.Client
 {
-    class OrdinaryClient : ConsoleApp5.Client.Client
+    class OrdinaryClient : Client
     {
         public new bool AddNewBankAccount(BankAccount.BankAccount bankAccount)
         {

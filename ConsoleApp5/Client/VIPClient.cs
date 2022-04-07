@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp5.Client
 {
-    class VipClient : ConsoleApp5.Client.Client
+    class VipClient : Client
     {
         public new bool AddNewBankAccount(BankAccount.BankAccount bankAccount)
         {

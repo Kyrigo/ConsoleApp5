@@ -4,7 +4,7 @@ namespace ConsoleApp5.Client
 {
     abstract class Client
     {
-        private static int _numId = 0;
+        private static int _numId;
         protected readonly int Id;
         protected string FullName;
         protected List<BankAccount.BankAccount> BankAccounts = new();
