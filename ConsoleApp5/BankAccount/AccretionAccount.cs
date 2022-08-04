@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp5.BankAccount
 {
-    class AccretionAccount : BankAccount
+    public class AccretionAccount : BankAccount
     {
         private readonly double _initialPayment;
         private readonly double _interestRate;

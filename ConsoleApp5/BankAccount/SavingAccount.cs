@@ -1,6 +1,6 @@
 ﻿namespace ConsoleApp5.BankAccount
 {
-    class SavingAccount : BankAccount
+    public class SavingAccount : BankAccount
     {
         public SavingAccount(int ownerId, double amount) : base(ownerId, amount) { }
 

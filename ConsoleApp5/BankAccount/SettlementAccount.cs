@@ -1,8 +1,8 @@
 ﻿namespace ConsoleApp5.BankAccount
 {
-    class SettlementAccount : BankAccount
+    public class SettlementAccount : BankAccount
     {
-        private readonly double _serviceFee;
+        private static double _serviceFee;
 
         public SettlementAccount(int ownerId, double amount, double serviceFee) : base(ownerId, amount)
         {
@@ -27,7 +27,7 @@
             return true;
         }
 
-        public bool DrawDownServiceFee()
+        public static bool DrawDownServiceFee()
         {
             if (_serviceFee > Amount || IsClosed) return false;
 

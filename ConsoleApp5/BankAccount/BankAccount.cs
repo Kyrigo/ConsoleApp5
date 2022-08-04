@@ -5,8 +5,8 @@
         private static int _numId;
         protected int Id;
         protected int OwnerId;
-        protected double Amount;        
-        protected bool IsClosed = false;
+        protected static double Amount;        
+        protected static bool IsClosed = false;
         public int Identify => Id;
 
         public double AmountMoney => Amount;
