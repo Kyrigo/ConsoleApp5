@@ -23,9 +23,7 @@
         {
             if (Amount != 0) return false;
 
-            IsClosed = true;
-
-            return true;
+            return IsClosed = true;
         } 
         public abstract bool Refill(double amountMoney); 
         

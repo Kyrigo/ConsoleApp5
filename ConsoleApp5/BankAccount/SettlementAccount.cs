@@ -6,7 +6,7 @@
 
         public SettlementAccount(int ownerId, double amount, double serviceFee) : base(ownerId, amount)
         {
-            this._serviceFee = serviceFee;
+            _serviceFee = serviceFee;
         }
 
         public override bool TakeMoney(double amountMoney)

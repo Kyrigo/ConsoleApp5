@@ -2,14 +2,12 @@
 
 namespace ConsoleApp5.Client
 {
-    abstract class Client
+    abstract class Client : IComparable<Client>
     {
         private static int _numId;
         protected readonly int Id;
         protected string FullName;
         protected List<BankAccount.BankAccount> BankAccounts = new();
-
-        public int Identifier => Id;
 
         protected Client(string fullName)
         {
@@ -48,6 +46,14 @@ namespace ConsoleApp5.Client
             }
 
             return false;
+        }
+
+        public int CompareTo(Client client)
+        {
+            if (this.GetAllAmountOfMoneyInBankAccounts() < client.GetAllAmountOfMoneyInBankAccounts()) return -1;
+            // ReSharper disable once CompareOfFloatsByEqualityOperator
+            if (this.GetAllAmountOfMoneyInBankAccounts() == client.GetAllAmountOfMoneyInBankAccounts()) return 0;
+            return 1;
         }
     }
 }

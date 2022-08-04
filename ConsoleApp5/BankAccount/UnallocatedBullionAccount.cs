@@ -3,7 +3,7 @@
     class UnallocatedBullionAccount : BankAccount
     {
         public int MetalType { get; }
-        private double ExchangeRate { get; set; }
+        private double ExchangeRate { get; }
 
         public new double AmountMoney => Amount * ExchangeRate;
 
