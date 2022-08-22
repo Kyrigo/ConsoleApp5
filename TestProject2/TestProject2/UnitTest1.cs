@@ -6,7 +6,7 @@ namespace TestProject2;
 public class Tests
 {
     [Test]
-    public void Test1()
+    public void CheckSettlementAccountFee()
     {
         double expectedBalance = 99;
         double fee = 1;
