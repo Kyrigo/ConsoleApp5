@@ -2,51 +2,29 @@
 {
     class UnallocatedBullionAccount : BankAccount
     {
-        public int MetalType { get; }
-        private double ExchangeRate { get; }
+        public int MetalType { get; init; }
+        private double _weight;
 
-        public new double AmountMoney => Amount * ExchangeRate;
-
-        public UnallocatedBullionAccount(int ownerId, double amount, int metalType, double exchangeRate) : base(ownerId, amount)
+        public UnallocatedBullionAccount(int ownerId, int metalType) : base(ownerId)
         { 
             MetalType = metalType;
-            ExchangeRate = exchangeRate;
-            Amount /= ExchangeRate;
         }
 
-        public bool TakeMoney(double amountGramm, out double amount)
+        public new void Refill(double amount, double exchangeRate)
         {
-            if (amountGramm <= Amount || !IsClosed)
+            var bullionAmount = amount / exchangeRate;
+            _weight += bullionAmount;
+        }
+
+        public new void Withdraw(double amount, double exchangeRate)
+        {
+            if (_weight * exchangeRate < amount)
             {
-                Amount -= amountGramm;
-                amount = amountGramm * ExchangeRate;
-                return true;
+                throw new Exception();
             }
 
-            amount = 0;
-
-            return false;
-        }
-
-        public override bool Refill(double amountMoney)
-        {
-            if (IsClosed) return false;
-
-            Amount += amountMoney / ExchangeRate;
-
-            return true;
-        }
-
-        public override bool TakeMoney(double amountMoney)
-        {
-            double amountGramm = amountMoney / ExchangeRate;
-            if (amountGramm <= Amount || !IsClosed)
-            {
-                Amount -= amountGramm;
-                return true;
-            }
-
-            return false;
+            var bullionAmount = amount / exchangeRate;
+            _weight -= bullionAmount;
         }
     }
 }

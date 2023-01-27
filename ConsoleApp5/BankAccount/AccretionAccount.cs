@@ -1,42 +1,36 @@
 ﻿namespace ConsoleApp5.BankAccount
 {
-    public class AccretionAccount : BankAccount
+    public sealed class AccretionAccount : BankAccount
     {
-        private readonly double _initialPayment;
+        private readonly double _initialDeposit;
         private readonly double _interestRate;
 
-        public AccretionAccount(int ownerId, double amount, double interestRate) : base(ownerId, amount)
+        public AccretionAccount(int ownerId, double deposit, double interestRate) : base(ownerId)
         {
-            _initialPayment = amount;
+            _initialDeposit = deposit;
             _interestRate = interestRate;
-            IsClosed = false;
         }
 
-        public override bool TakeMoney(double amountMoney)
+        public override void Withdraw(double amount)
         {
-            if (amountMoney < _initialPayment || Amount > amountMoney || IsClosed) return false;
-
-            Amount -= amountMoney;
-
-            return true;
+            if (amount < _initialDeposit)
+            {
+                base.Withdraw(amount);
+            }
         }
 
-        public override bool Refill(double amountMoney)
+        public override void Refill(double amount)
         {
-            if (amountMoney < _initialPayment || IsClosed) return false;
-
-            Amount += amountMoney;
-
-            return true;
+            if (amount < _initialDeposit)
+            {
+                base.Refill(amount);
+            }
         }
 
-        public bool CapitalizingInterestPerMonth()
+        public void CapitalizingInterestPerMonth()
         {
-            if (IsClosed) return false;
-
-            Amount = Amount * _interestRate / 12;
-
-            return true;
+            var amount = Deposit * _interestRate / 12;
+            base.Refill(amount);
         }
     }
 }

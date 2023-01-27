@@ -39,7 +39,7 @@ namespace ConsoleApp5.Client
 
             if (bankAccount != null)
             {
-                if (bankAccount.CloseAccount())
+                if (bankAccount.TryClose())
                 {
                     return true;
                 }

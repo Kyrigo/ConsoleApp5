@@ -2,31 +2,43 @@
 {
     public abstract class BankAccount
     {
-        private static int _numId;
-        protected int Id;
-        protected int OwnerId;
-        protected static double Amount;        
-        protected static bool IsClosed = false;
-        public int Identify => Id;
+        protected Guid Id { get; init; }
+        private readonly int _ownerId;
+        protected double Deposit { get; private set; }
+        private bool _isClosed;
+        public Guid Identify => Id;
 
-        public double AmountMoney => Amount;
+        public double AmountMoney => Deposit;
 
-        protected BankAccount(int ownerId, double amount)
+        protected BankAccount(int ownerId)
         {
-            _numId++;
-            Id = _numId;
-            OwnerId = ownerId;
-            Amount = amount;
+            Id = Guid.NewGuid();
+            _ownerId = ownerId;
+            _isClosed = false;
+        }
+        
+
+        public virtual bool TryClose()
+        {
+            if (Deposit > 0) return false;
+            _isClosed = true;
+            return true;
         }
 
-        public bool CloseAccount()
+        public virtual void Refill(double amount)
         {
-            if (Amount != 0) return false;
+            if (!_isClosed)
+            {
+                Deposit += amount;
+            }
+        }
 
-            return IsClosed = true;
-        } 
-        public abstract bool Refill(double amountMoney); 
-        
-        public abstract bool TakeMoney(double amountMoney);
+        public virtual void Withdraw(double amount)
+        {
+            if (!_isClosed && amount <= Deposit)
+            {
+                Deposit -= amount;
+            }
+        }
     }
 }

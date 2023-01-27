@@ -6,7 +6,7 @@
         {
             if (ammountMoney > senderAccount.AmountMoney) return false;
 
-            senderAccount.TakeMoney(ammountMoney);
+            senderAccount.Withdraw(ammountMoney);
             recipientAccount.Refill(ammountMoney);
 
             return true;

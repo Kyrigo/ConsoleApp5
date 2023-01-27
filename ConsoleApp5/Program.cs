@@ -14,10 +14,10 @@
             anotherClient.AddNewBankAccount(newAccountForAnother);
             
 
-            newAccount.TakeMoney(50);
+            newAccount.Withdraw(50);
             var compareTo = newClient.CompareTo(anotherClient);
-            newAccount.Refill(100);
-            anotherNewAccount.Refill(50);
+            newAccount.Deposit(100);
+            anotherNewAccount.Deposit(50);
             newClient.GetAllBankAccounts();
         }
     }
